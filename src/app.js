@@ -27,6 +27,25 @@ function Random (nun) {
 }
 
 const boton = document.querySelector("#btn")
-boton.addEventListener("click", cardRandom)
+boton.addEventListener("click", start)
+
+ let timeout;
+function start(){
+  cardRandom()
+
+    function replay (){
+      timeout = setTimeout(() => {
+        cardRandom()
+        replay()
+      }, 1000);
+    }
+    replay()
+}
+
+const boton2 = document.querySelector("#pausa")
+boton2. addEventListener("click", stop)
+ function stop(){
+  clearTimeout(timeout)
+ }
 
 window.onload = cardRandom
